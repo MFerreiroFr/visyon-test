@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="./js/menu-nav.js"></script>
+    <script src="./js/menu-item.js"></script>
+    <script src="./js/play-pause.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <a-scene background="color: #2c3e50">
+      <a-assets>
+        <img src="assets/prev.png" id="prev">
+        <img src="assets/next.png" id="next">
+        <img src="./assets/play.png" id="play">
+        <img src="./assets/pause.png" id="pause">
+        <img id="town" src="./assets/town.jpg" />
+        <img src="./assets/gallery.jpg" id="gallery" />
+        <img src="./assets/pancakes.jpg" id="pancakes">
+        <img src="./assets/breakfast.jpg" id="breakfast">
+        <img src="assets/penguins.jpg" id="penguins">
+        <img src="assets/cat.jpg" id="cat">
+        <img src="assets/goat.jpg" id="goat">
+        <img src="assets/owl.jpg" id="owl">
+        <img src="assets/parrots.jpg" id="parrots">
+        <img src="assets/spiral.jpg" id="spiral">
+        <img src="assets/blueberries.jpg" id="blueberries">
+        <img src="assets/cake.jpg" id="cake">
+        <img src="assets/tree.jpg" id="tree">
+        <img src="assets/strawberries.jpg" id="strawberries">
+        <img src="assets/spices.jpg" id="spices">
+        <img src="assets/sandwich.jpg" id="sandwich">
+        <img src="assets/popcorn.jpg" id="popcorn">
+        <img src="assets/coffee.jpg" id="coffee">
+        <video src="./assets/lighthouse.mp4" id="lighthouse"></video>
+        <video src="./assets/360-london-low.mp4" id="london" loop="true" preload="auto"></video>
+        <img src="assets/background.jpg" id="background">
+
+      </a-assets>
+     
+     <a-entity id="sky" geometry="primitive: sphere; radius: 5000; segmentsWidth: 64; segmentsHeight: 32" scale="-1 1 1" material="color: #fff; side: back; shader: flat; src: #background">
+        <a-image id="video360Controls" src="#play" position="0 -0 -4" scale="0 0 1" color="#fff"
+        play-pause="sky: true" />
+     </a-entity>
+
+     <a-entity  id="img" geometry="primitive: plane" material="color: #FFF; shader: flat; side: front; transparent: true" position="-1 2.5 -4" scale="3 2 2" >
+        <a-image id="videoControls" src="#play" position="0 -0.75 0.01" scale="0 0 1" color="#fff"
+        play-pause />
+     </a-entity>
+      
+      <!-- <a-box
+        color="#FF00FF"
+        position="-2 1.5 -4"
+        menu-nav="dir: next; dur: 300"
+      ></a-box> -->
+      <a-plane
+        position="2.1 2.5 -3"
+        color="#777777"
+        scale="2 2 1"
+        side="double"
+        id="menu"
+      >
+        <a-entity geometry="primitive: plane" material="shader: flat; side: front; src: #prev"
+        position="-0.555 0.45 0"
+        scale="0.1 0.1 0.01"
+        menu-nav="dur: 300; dir: prev"
+        ></a-entity>
+        <a-box
+          color="#2980b9"
+          position="-0.555 0.314 0"
+          scale="0.1 0.16 0.01"
+          class="scroll-bar"
+          side="front"
+          id="scroll-bar"
+        ></a-box>
+
+        <a-entity geometry="primitive: plane" material="color: #3498db; shader: flat; side: front; src: #next"
+        position="-0.555 -0.445 0"
+        scale="0.1 0.1 0.01"
+        menu-nav="dir: next; dur: 300"
+        ></a-entity>
+        <a-box
+          color="#2ecc71"
+          material="opacity: 0"
+          position="0 0.375 0.1"
+          scale="1 0.25 0.01"
+          class="movable"
+          side="front"
+          menu-item="media: 360; asset: #town"
+        >
+          <a-entity
+            text="value:  town 360;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+        <a-box
+          color="#2ecc71"
+          position="0 0.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: 360; asset: #gallery"
+        >
+          <a-entity
+            text="value:  360 gallery;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+        <a-box
+          color="#2ecc71"
+          position="0 -0.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #pancakes"
+        >
+          <a-entity
+            text="value:  pancakes;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+        <a-box
+          color="#2ecc71"
+          position="0 -0.375 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #breakfast"
+        >
+          <a-entity
+            text="value:  breakfast;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+        <a-box
+          color="#2ecc71"
+          position="0 -0.625 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          side="front"
+          menu-item="media: video; asset: #lighthouse"
+        >
+          <a-entity
+            text="value:  video;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+        <a-box
+          color="#00FF00"
+          position="0 -0.875 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          side="front"
+          menu-item="media: 360video; asset: #london"
+        >
+          <a-entity
+            text="value:  video 360;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -1.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #cat"
+        >
+          <a-entity
+            text="value:  cat;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -1.375 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #owl"
+        >
+          <a-entity
+            text="value:  owl;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -1.625 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #parrots"
+        >
+          <a-entity
+            text="value:  parrots;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -1.875 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #penguins"
+        >
+          <a-entity
+            text="value:  penguins;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -2.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #goat"
+        >
+          <a-entity
+            text="value:  goat;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -2.375 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #spiral"
+        >
+          <a-entity
+            text="value:  spiral;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -2.625 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #tree"
+        >
+          <a-entity
+            text="value:  tree;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -2.875 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #blueberries"
+        >
+          <a-entity
+            text="value:  blueberries;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -3.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #cake"
+        >
+          <a-entity
+            text="value:  cake;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -3.375 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #strawberries"
+        >
+          <a-entity
+            text="value:  strawberries;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -3.625 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #popcorn"
+        >
+          <a-entity
+            text="value:  popcorn;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -3.875 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #sandwich"
+        >
+          <a-entity
+            text="value:  sandwich;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -4.125 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #coffee"
+        >
+          <a-entity
+            text="value:  coffee;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+
+        <a-box
+          color="#2ecc71"
+          position="0 -4.375 0.1"
+          material="opacity: 0"
+          scale="1 0.25 0.01"
+          class="movable"
+          menu-item="media: img; asset: #spices"
+        >
+          <a-entity
+            text="value:  spices;  align:  center;  width:  2.5"
+            position="0 0 0.6"
+            scale=" 1 3 1"
+          ></a-entity>
+        </a-box>
+      </a-plane>
+      <!-- <a-plane rotation="-90 0 0" scale="50 50 1" color="#212121"></a-plane> -->
+
+      <a-entity>
+        <a-camera id="#camera" wasd-controls-enabled="false">
+          <a-entity cursor="fuse: false" id="cursor" position="0 0 -1"
+            geometry="primitive: sphere; radius: 0.005"
+					  material="color: #212121; shader: flat; opacity: 0.7">
+			</a-entity>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
