@@ -6,6 +6,8 @@ Author: Matías Ferreiro
 
  - Stable internet connection for the libraries CDN
  - Http server is not provided. Use the one you like best (I used python HTTPSimpleServer)
+ - Also you can go to the [repository](https://github.com/MFerreiroFr/visyon-test)
+ - And there is a deplooyed version of the test in [Github Pages](https://mferreirofr.github.io/visyon-test/) (Loading times can be high by the sheer volume of asset data, so patience is advised).
 
 #### How to use
 
